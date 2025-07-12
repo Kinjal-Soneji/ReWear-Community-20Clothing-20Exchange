@@ -23,8 +23,102 @@ import {
   MessageSquare,
   AlertCircle,
 } from "lucide-react";
+import { useState } from "react";
+
+// Sample swap requests data
+const initialSwapRequests = [
+  {
+    id: 1,
+    requesterId: "user_123",
+    requesterName: "Sarah Chen",
+    requesterImage:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+    requestedItem: {
+      id: 1,
+      title: "Vintage Denim Jacket",
+      image:
+        "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=100&h=100&fit=crop&crop=center",
+    },
+    offeredItem: {
+      id: 2,
+      title: "Designer Silk Blouse",
+      image:
+        "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=100&h=100&fit=crop&crop=center",
+    },
+    message:
+      "Hi! I'd love to swap my silk blouse for your vintage jacket. It's in excellent condition!",
+    timestamp: "2 hours ago",
+    status: "pending",
+  },
+  {
+    id: 2,
+    requesterId: "user_456",
+    requesterName: "Emma Rodriguez",
+    requesterImage:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    requestedItem: {
+      id: 3,
+      title: "Summer Floral Dress",
+      image:
+        "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=100&h=100&fit=crop&crop=center",
+    },
+    offeredItem: {
+      id: 4,
+      title: "Cozy Knit Sweater",
+      image:
+        "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=100&h=100&fit=crop&crop=center",
+    },
+    message:
+      "Perfect for the season! Would love to trade my sweater for your dress.",
+    timestamp: "5 hours ago",
+    status: "pending",
+  },
+  {
+    id: 3,
+    requesterId: "user_789",
+    requesterName: "Michael Park",
+    requesterImage:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+    requestedItem: {
+      id: 1,
+      title: "Vintage Denim Jacket",
+      image:
+        "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=100&h=100&fit=crop&crop=center",
+    },
+    offeredItem: {
+      id: 5,
+      title: "Classic White Sneakers",
+      image:
+        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop&crop=center",
+    },
+    message: "Great condition sneakers! Perfect trade for your jacket.",
+    timestamp: "1 day ago",
+    status: "pending",
+  },
+];
 
 export default function Dashboard() {
+  const [swapRequests, setSwapRequests] = useState(initialSwapRequests);
+
+  const handleAcceptSwap = (requestId: number) => {
+    setSwapRequests((prev) =>
+      prev.map((request) =>
+        request.id === requestId ? { ...request, status: "accepted" } : request,
+      ),
+    );
+    // Here you would typically make an API call to accept the swap
+    console.log(`Swap request ${requestId} accepted`);
+  };
+
+  const handleDeclineSwap = (requestId: number) => {
+    setSwapRequests((prev) =>
+      prev.map((request) =>
+        request.id === requestId ? { ...request, status: "declined" } : request,
+      ),
+    );
+    // Here you would typically make an API call to decline the swap
+    console.log(`Swap request ${requestId} declined`);
+  };
   return (
     <div className="min-h-screen bg-sage-light/30">
       {/* Navigation */}
