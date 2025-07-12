@@ -128,6 +128,36 @@ function AvatarMesh({
           />
         </mesh>
 
+        {/* Cool Sunglasses */}
+        <mesh position={[0, 2.25, 0.35]} castShadow>
+          <boxGeometry args={[0.6, 0.15, 0.1]} />
+          <meshStandardMaterial
+            color="#000000"
+            roughness={0.1}
+            metalness={0.8}
+          />
+        </mesh>
+        <mesh position={[-0.2, 2.25, 0.4]} castShadow>
+          <cylinderGeometry args={[0.08, 0.08, 0.02, 16]} />
+          <meshStandardMaterial
+            color="#333333"
+            roughness={0.1}
+            metalness={0.7}
+            transparent
+            opacity={0.3}
+          />
+        </mesh>
+        <mesh position={[0.2, 2.25, 0.4]} castShadow>
+          <cylinderGeometry args={[0.08, 0.08, 0.02, 16]} />
+          <meshStandardMaterial
+            color="#333333"
+            roughness={0.1}
+            metalness={0.7}
+            transparent
+            opacity={0.3}
+          />
+        </mesh>
+
         {/* Body */}
         <mesh position={[0, 1.2, 0]} castShadow receiveShadow>
           <cylinderGeometry args={[0.4, 0.5, 1.2, 8]} />
@@ -223,6 +253,35 @@ function AvatarMesh({
             metalness={0.3}
           />
         </mesh>
+
+        {/* Watch accessory */}
+        <mesh position={[-0.85, 1.1, 0]} castShadow>
+          <cylinderGeometry args={[0.08, 0.08, 0.05, 16]} />
+          <meshStandardMaterial
+            color="#silver"
+            roughness={0.1}
+            metalness={0.9}
+          />
+        </mesh>
+
+        {/* Cool floating sparkles */}
+        {Array.from({ length: 8 }).map((_, i) => (
+          <mesh
+            key={i}
+            position={[
+              Math.cos((i / 8) * Math.PI * 2) * 1.5,
+              2 + Math.sin((i / 8) * Math.PI * 4) * 0.3,
+              Math.sin((i / 8) * Math.PI * 2) * 1.5,
+            ]}
+            castShadow
+          >
+            <octahedronGeometry args={[0.03]} />
+            <meshStandardMaterial
+              color={`hsl(${(i * 45) % 360}, 70%, 70%)`}
+              emissive={`hsl(${(i * 45) % 360}, 70%, 30%)`}
+            />
+          </mesh>
+        ))}
       </group>
     );
   };
