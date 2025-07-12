@@ -264,6 +264,200 @@ export default function Dashboard() {
               </CardContent>
             </Card>
 
+            {/* Swap Requests */}
+            <Card className="border-none shadow-lg bg-white">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <ArrowRightLeft className="w-5 h-5 text-primary" />
+                  <span>Swap Requests</span>
+                  {swapRequests.filter((req) => req.status === "pending")
+                    .length > 0 && (
+                    <Badge className="bg-primary/10 text-primary">
+                      {
+                        swapRequests.filter((req) => req.status === "pending")
+                          .length
+                      }
+                    </Badge>
+                  )}
+                </CardTitle>
+                <CardDescription>
+                  Review and respond to swap requests from other users
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {swapRequests.length === 0 ? (
+                  <div className="text-center py-8">
+                    <ArrowRightLeft className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-foreground mb-2">
+                      No swap requests yet
+                    </h3>
+                    <p className="text-muted-foreground">
+                      When users want to swap with your items, they'll appear
+                      here
+                    </p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {swapRequests.map((request) => (
+                      <div
+                        key={request.id}
+                        className={`p-4 rounded-lg border-2 transition-all ${
+                          request.status === "accepted"
+                            ? "bg-emerald-50 border-emerald-200"
+                            : request.status === "declined"
+                              ? "bg-red-50 border-red-200"
+                              : "bg-white border-gray-200 hover:border-primary/30"
+                        }`}
+                      >
+                        <div className="flex items-start space-x-4">
+                          {/* Requester Info */}
+                          <img
+                            src={request.requesterImage}
+                            alt={request.requesterName}
+                            className="w-12 h-12 rounded-full object-cover"
+                          />
+                          <div className="flex-1 space-y-3">
+                            {/* Header */}
+                            <div className="flex items-start justify-between">
+                              <div>
+                                <h4 className="font-semibold text-foreground">
+                                  {request.requesterName}
+                                </h4>
+                                <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+                                  <Clock className="w-3 h-3" />
+                                  <span>{request.timestamp}</span>
+                                </div>
+                              </div>
+                              {request.status === "pending" && (
+                                <Badge
+                                  variant="secondary"
+                                  className="flex items-center space-x-1"
+                                >
+                                  <AlertCircle className="w-3 h-3" />
+                                  <span>Pending</span>
+                                </Badge>
+                              )}
+                              {request.status === "accepted" && (
+                                <Badge className="bg-emerald text-white flex items-center space-x-1">
+                                  <Check className="w-3 h-3" />
+                                  <span>Accepted</span>
+                                </Badge>
+                              )}
+                              {request.status === "declined" && (
+                                <Badge
+                                  variant="destructive"
+                                  className="flex items-center space-x-1"
+                                >
+                                  <X className="w-3 h-3" />
+                                  <span>Declined</span>
+                                </Badge>
+                              )}
+                            </div>
+
+                            {/* Swap Details */}
+                            <div className="flex items-center space-x-6">
+                              {/* Their item */}
+                              <div className="flex items-center space-x-3">
+                                <img
+                                  src={request.offeredItem.image}
+                                  alt={request.offeredItem.title}
+                                  className="w-16 h-16 rounded-lg object-cover"
+                                />
+                                <div>
+                                  <p className="text-sm text-muted-foreground">
+                                    They offer:
+                                  </p>
+                                  <p className="font-medium">
+                                    {request.offeredItem.title}
+                                  </p>
+                                </div>
+                              </div>
+
+                              {/* Arrow */}
+                              <ArrowRightLeft className="w-6 h-6 text-primary" />
+
+                              {/* Your item */}
+                              <div className="flex items-center space-x-3">
+                                <img
+                                  src={request.requestedItem.image}
+                                  alt={request.requestedItem.title}
+                                  className="w-16 h-16 rounded-lg object-cover"
+                                />
+                                <div>
+                                  <p className="text-sm text-muted-foreground">
+                                    For your:
+                                  </p>
+                                  <p className="font-medium">
+                                    {request.requestedItem.title}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Message */}
+                            <div className="bg-gray-50 p-3 rounded-lg">
+                              <div className="flex items-start space-x-2">
+                                <MessageSquare className="w-4 h-4 text-muted-foreground mt-0.5" />
+                                <p className="text-sm text-foreground">
+                                  {request.message}
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* Action Buttons */}
+                            {request.status === "pending" && (
+                              <div className="flex space-x-3 pt-2">
+                                <Button
+                                  onClick={() => handleAcceptSwap(request.id)}
+                                  className="bg-emerald hover:bg-emerald/90 text-white flex items-center space-x-2"
+                                >
+                                  <Check className="w-4 h-4" />
+                                  <span>Accept Swap</span>
+                                </Button>
+                                <Button
+                                  onClick={() => handleDeclineSwap(request.id)}
+                                  variant="outline"
+                                  className="border-red-200 text-red-600 hover:bg-red-50 flex items-center space-x-2"
+                                >
+                                  <X className="w-4 h-4" />
+                                  <span>Decline</span>
+                                </Button>
+                                <Button
+                                  variant="ghost"
+                                  className="flex items-center space-x-2"
+                                >
+                                  <MessageSquare className="w-4 h-4" />
+                                  <span>Send Message</span>
+                                </Button>
+                              </div>
+                            )}
+
+                            {request.status === "accepted" && (
+                              <div className="bg-emerald-50 p-3 rounded-lg">
+                                <p className="text-sm text-emerald-700">
+                                  ✅ Swap accepted! Contact details have been
+                                  shared with both parties.
+                                </p>
+                              </div>
+                            )}
+
+                            {request.status === "declined" && (
+                              <div className="bg-red-50 p-3 rounded-lg">
+                                <p className="text-sm text-red-700">
+                                  ❌ Swap declined. The other user has been
+                                  notified.
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
             {/* My Items */}
             <Card className="border-none shadow-lg bg-white">
               <CardHeader className="flex flex-row items-center justify-between">
