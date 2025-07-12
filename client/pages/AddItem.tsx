@@ -316,6 +316,10 @@ export default function AddItem() {
                   <Label htmlFor="description">Description</Label>
                   <Textarea
                     id="description"
+                    value={formData.description}
+                    onChange={(e) =>
+                      updateFormData("description", e.target.value)
+                    }
                     placeholder="Describe your item in detail - brand, material, styling tips, why you're letting it go..."
                     className="mt-1 min-h-24"
                   />
