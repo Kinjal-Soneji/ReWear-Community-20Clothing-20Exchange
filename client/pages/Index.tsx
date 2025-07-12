@@ -187,16 +187,25 @@ export default function Index() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    Start Swapping
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                  <Button size="lg" variant="outline">
-                    Browse Items
-                  </Button>
-                  <Button size="lg" variant="outline">
-                    List an Item
-                  </Button>
+                  <Link to="/dashboard">
+                    <Button
+                      size="lg"
+                      className="bg-primary hover:bg-primary/90"
+                    >
+                      Start Swapping
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                  </Link>
+                  <Link to="/browse">
+                    <Button size="lg" variant="outline">
+                      Browse Items
+                    </Button>
+                  </Link>
+                  <Link to="/add-item">
+                    <Button size="lg" variant="outline">
+                      List an Item
+                    </Button>
+                  </Link>
                 </div>
 
                 <div className="grid grid-cols-3 gap-8 pt-8">
