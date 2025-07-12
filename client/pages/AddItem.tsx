@@ -280,26 +280,33 @@ export default function AddItem() {
                 {/* Basic Info */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="title">Title</Label>
+                    <Label htmlFor="title">Title *</Label>
                     <Input
                       id="title"
+                      value={formData.title}
+                      onChange={(e) => updateFormData("title", e.target.value)}
                       placeholder="e.g., Vintage Denim Jacket"
                       className="mt-1"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="category">Category</Label>
-                    <Select>
+                    <Label htmlFor="category">Category *</Label>
+                    <Select
+                      value={formData.category}
+                      onValueChange={(value) =>
+                        updateFormData("category", value)
+                      }
+                    >
                       <SelectTrigger className="mt-1">
                         <SelectValue placeholder="Select category" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="tops">Tops</SelectItem>
-                        <SelectItem value="bottoms">Bottoms</SelectItem>
-                        <SelectItem value="dresses">Dresses</SelectItem>
-                        <SelectItem value="outerwear">Outerwear</SelectItem>
-                        <SelectItem value="shoes">Shoes</SelectItem>
-                        <SelectItem value="accessories">Accessories</SelectItem>
+                        <SelectItem value="Tops">Tops</SelectItem>
+                        <SelectItem value="Bottoms">Bottoms</SelectItem>
+                        <SelectItem value="Dresses">Dresses</SelectItem>
+                        <SelectItem value="Outerwear">Outerwear</SelectItem>
+                        <SelectItem value="Shoes">Shoes</SelectItem>
+                        <SelectItem value="Accessories">Accessories</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
