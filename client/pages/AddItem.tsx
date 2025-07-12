@@ -45,8 +45,26 @@ interface ItemFormData {
 }
 
 export default function AddItem() {
+  const navigate = useNavigate();
   const [tags, setTags] = useState<string[]>([]);
   const [newTag, setNewTag] = useState("");
+  const [uploadedImages, setUploadedImages] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showImageSelector, setShowImageSelector] = useState(false);
+
+  const [formData, setFormData] = useState<ItemFormData>({
+    title: "",
+    category: "",
+    description: "",
+    type: "",
+    size: "",
+    condition: "",
+    tags: [],
+    images: [],
+    swapAllowed: true,
+    pointsAllowed: true,
+    pointValue: 150,
+  });
 
   const addTag = () => {
     if (newTag.trim() && !tags.includes(newTag.trim())) {
