@@ -154,6 +154,15 @@ export default function Index() {
               <Link to="/dashboard">
                 <Button>Get Started</Button>
               </Link>
+              <Link to="/admin-panel">
+                <Button
+                  variant="ghost"
+                  className="hidden lg:flex bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:from-purple-600 hover:to-blue-600"
+                  title="Admin Panel"
+                >
+                  🚀
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
