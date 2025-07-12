@@ -417,10 +417,12 @@ export default function Index() {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" variant="outline">
-              View All Items
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <Link to="/browse">
+              <Button size="lg" variant="outline">
+                View All Items
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
