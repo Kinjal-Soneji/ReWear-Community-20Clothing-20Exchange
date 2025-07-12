@@ -225,37 +225,37 @@ export default function Index() {
               </div>
 
               <div className="relative">
-                <div className="grid grid-cols-2 gap-4 rotate-3">
+                <TShirt3D className="mb-8" />
+                <div className="grid grid-cols-2 gap-4 mt-8">
                   <div className="space-y-4">
                     <div
-                      className="h-48 rounded-2xl shadow-lg bg-cover bg-center"
+                      className="h-32 rounded-2xl shadow-lg bg-cover bg-center transform rotate-3 hover:scale-105 transition-transform duration-300"
                       style={{
                         backgroundImage: `url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&h=600&fit=crop&crop=center')`,
                       }}
                     ></div>
                     <div
-                      className="h-32 rounded-2xl shadow-lg bg-cover bg-center"
+                      className="h-24 rounded-2xl shadow-lg bg-cover bg-center transform -rotate-2 hover:scale-105 transition-transform duration-300"
                       style={{
                         backgroundImage: `url('https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=300&fit=crop&crop=center')`,
                       }}
                     ></div>
                   </div>
-                  <div className="space-y-4 mt-8">
+                  <div className="space-y-4 mt-4">
                     <div
-                      className="h-32 rounded-2xl shadow-lg bg-cover bg-center"
+                      className="h-24 rounded-2xl shadow-lg bg-cover bg-center transform rotate-2 hover:scale-105 transition-transform duration-300"
                       style={{
                         backgroundImage: `url('https://images.unsplash.com/photo-1544966503-7cc4ac882d5d?w=400&h=300&fit=crop&crop=center')`,
                       }}
                     ></div>
                     <div
-                      className="h-48 rounded-2xl shadow-lg bg-cover bg-center"
+                      className="h-32 rounded-2xl shadow-lg bg-cover bg-center transform -rotate-1 hover:scale-105 transition-transform duration-300"
                       style={{
                         backgroundImage: `url('https://images.unsplash.com/photo-1611601679655-7c8bc197f0c6?w=400&h=600&fit=crop&crop=center')`,
                       }}
                     ></div>
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-3xl"></div>
               </div>
             </div>
           </div>
