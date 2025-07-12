@@ -199,25 +199,82 @@ export default function AddItem() {
               <CardContent className="space-y-6">
                 {/* Image Upload */}
                 <div>
-                  <Label className="text-base font-semibold">Photos</Label>
+                  <Label className="text-base font-semibold">Photos *</Label>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Upload up to 5 high-quality photos of your item
+                    Add up to 5 high-quality photos of your item (
+                    {uploadedImages.length}/5)
                   </p>
-                  <div className="grid grid-cols-3 gap-4">
-                    {[1, 2, 3].map((index) => (
+
+                  {/* Uploaded Images */}
+                  <div className="grid grid-cols-3 gap-4 mb-4">
+                    {uploadedImages.map((image, index) => (
+                      <div key={index} className="relative aspect-square">
+                        <img
+                          src={image}
+                          alt={`Upload ${index + 1}`}
+                          className="w-full h-full object-cover rounded-lg border-2 border-primary"
+                        />
+                        <button
+                          onClick={() => removeImage(image)}
+                          className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
+                        >
+                          <X className="w-3 h-3" />
+                        </button>
+                      </div>
+                    ))}
+
+                    {/* Add Photo Button */}
+                    {uploadedImages.length < 5 && (
                       <div
-                        key={index}
-                        className="aspect-square border-2 border-dashed border-muted-foreground/30 rounded-lg flex items-center justify-center bg-muted/20 hover:bg-muted/40 transition-colors cursor-pointer"
+                        onClick={() => setShowImageSelector(true)}
+                        className="aspect-square border-2 border-dashed border-primary/30 rounded-lg flex items-center justify-center bg-primary/5 hover:bg-primary/10 transition-colors cursor-pointer"
                       >
                         <div className="text-center">
-                          <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-                          <p className="text-sm text-muted-foreground">
-                            Upload Photo
+                          <Camera className="w-8 h-8 text-primary mx-auto mb-2" />
+                          <p className="text-sm text-primary font-medium">
+                            Add Photo
                           </p>
                         </div>
                       </div>
-                    ))}
+                    )}
                   </div>
+
+                  {/* Image Selector Modal */}
+                  {showImageSelector && (
+                    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                      <div className="bg-white rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+                        <div className="flex justify-between items-center mb-4">
+                          <h3 className="text-lg font-semibold">
+                            Select T-Shirt Photo
+                          </h3>
+                          <button
+                            onClick={() => setShowImageSelector(false)}
+                            className="p-1 hover:bg-gray-100 rounded"
+                          >
+                            <X className="w-5 h-5" />
+                          </button>
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                          {sampleTshirtImages.map((image, index) => (
+                            <div
+                              key={index}
+                              onClick={() => {
+                                handleImageSelect(image);
+                                setShowImageSelector(false);
+                              }}
+                              className="aspect-square cursor-pointer hover:scale-105 transition-transform"
+                            >
+                              <img
+                                src={image}
+                                alt={`T-shirt ${index + 1}`}
+                                className="w-full h-full object-cover rounded-lg border-2 border-transparent hover:border-primary"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Basic Info */}
