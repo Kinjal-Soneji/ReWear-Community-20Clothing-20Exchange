@@ -3,7 +3,16 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Text } from "@react-three/drei";
 import * as THREE from "three";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, RotateCcw, Palette } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
+import {
+  ChevronLeft,
+  ChevronRight,
+  RotateCcw,
+  Palette,
+  Settings,
+  Play,
+  Pause,
+} from "lucide-react";
 
 // T-shirt designs data
 const tshirtDesigns = [
@@ -304,13 +313,37 @@ export default function Avatar3D({ className = "" }: Avatar3DProps) {
             variant="outline"
             size="icon"
             onClick={toggleAutoRotate}
-            className="bg-white/90 backdrop-blur-sm shadow-lg"
+            className={`bg-white/90 backdrop-blur-sm shadow-lg ${
+              autoRotate ? "bg-primary/10 border-primary" : ""
+            }`}
           >
-            <RotateCcw
-              className={`w-4 h-4 ${autoRotate ? "animate-spin" : ""}`}
-            />
+            {autoRotate ? (
+              <Pause className="w-4 h-4" />
+            ) : (
+              <Play className="w-4 h-4" />
+            )}
           </Button>
         </div>
+
+        {/* Rotation Speed Control */}
+        {autoRotate && (
+          <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm shadow-lg rounded-lg p-3 min-w-48">
+            <div className="flex items-center space-x-3">
+              <Settings className="w-4 h-4 text-muted-foreground" />
+              <span className="text-sm font-medium">Speed</span>
+              <div className="flex-1">
+                <Slider
+                  value={[rotationSpeed * 1000]}
+                  onValueChange={([value]) => setRotationSpeed(value / 1000)}
+                  max={50}
+                  min={5}
+                  step={1}
+                  className="w-full"
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* T-Shirt Customization Carousel */}
@@ -374,22 +407,24 @@ export default function Avatar3D({ className = "" }: Avatar3DProps) {
         {/* Control Instructions */}
         <div className="mt-6 p-4 bg-gradient-to-r from-emerald-50 to-blue-50 rounded-lg">
           <h4 className="font-semibold text-sm text-foreground mb-2">
-            How to Interact:
+            🎮 Interactive Controls:
           </h4>
-          <ul className="text-xs text-muted-foreground space-y-1">
-            <li>
-              • <strong>Drag</strong> to rotate 360° around the avatar
-            </li>
-            <li>
-              • <strong>Scroll</strong> to zoom in/out
-            </li>
-            <li>
-              • <strong>Click thumbnails</strong> to change t-shirt designs
-            </li>
-            <li>
-              • <strong>Auto-rotate button</strong> for hands-free viewing
-            </li>
-          </ul>
+          <div className="grid grid-cols-2 gap-3 text-xs text-muted-foreground">
+            <div>
+              <strong>Manual Control:</strong>
+              <ul className="space-y-1 mt-1">
+                <li>• Drag to rotate 360°</li>
+                <li>• Scroll to zoom in/out</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Customization:</strong>
+              <ul className="space-y-1 mt-1">
+                <li>• Click t-shirt thumbnails</li>
+                <li>• Auto-rotate with speed control</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
