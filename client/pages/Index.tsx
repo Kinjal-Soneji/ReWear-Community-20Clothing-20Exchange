@@ -226,7 +226,7 @@ export default function Index() {
               </div>
 
               <div className="relative">
-                <TShirt3D className="mb-8" />
+                <Avatar3D className="mb-8" />
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   <div className="space-y-4">
                     <div
