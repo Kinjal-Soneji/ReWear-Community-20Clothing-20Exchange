@@ -521,10 +521,29 @@ export default function AddItem() {
 
             {/* Submit */}
             <div className="space-y-3">
-              <Button className="w-full" size="lg">
-                List Item
+              <Button
+                className="w-full"
+                size="lg"
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Listing Item...
+                  </>
+                ) : (
+                  <>
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    List Item
+                  </>
+                )}
               </Button>
-              <Button variant="outline" className="w-full">
+              <Button
+                variant="outline"
+                className="w-full"
+                disabled={isSubmitting}
+              >
                 Save as Draft
               </Button>
             </div>
