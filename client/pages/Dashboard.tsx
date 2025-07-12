@@ -216,7 +216,9 @@ export default function Dashboard() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Listed Items</p>
-                  <p className="text-2xl font-bold text-emerald">12</p>
+                  <p className="text-2xl font-bold text-emerald">
+                    {userItems.length}
+                  </p>
                 </div>
               </div>
             </CardContent>
