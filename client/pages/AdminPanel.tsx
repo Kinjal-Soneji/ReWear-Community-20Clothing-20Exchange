@@ -47,7 +47,7 @@ import {
   PieChart,
   Globe,
   Smartphone,
-  Desktop,
+  Monitor,
   MessageSquare,
   UserCheck,
   UserX,
@@ -561,7 +561,7 @@ export default function AdminPanel() {
                           <Smartphone className="w-5 h-5 text-blue-500" />
                         )}
                         {device.type === "Desktop" && (
-                          <Desktop className="w-5 h-5 text-green-500" />
+                          <Monitor className="w-5 h-5 text-green-500" />
                         )}
                         {device.type === "Tablet" && (
                           <Smartphone className="w-5 h-5 text-purple-500" />
