@@ -253,14 +253,21 @@ export default function Dashboard() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <Button className="h-20 flex-col space-y-2">
-                    <Plus className="w-6 h-6" />
-                    <span>List New Item</span>
-                  </Button>
-                  <Button variant="outline" className="h-20 flex-col space-y-2">
-                    <Package className="w-6 h-6" />
-                    <span>Browse Items</span>
-                  </Button>
+                  <Link to="/add-item">
+                    <Button className="h-20 flex-col space-y-2 w-full">
+                      <Plus className="w-6 h-6" />
+                      <span>List New Item</span>
+                    </Button>
+                  </Link>
+                  <Link to="/browse">
+                    <Button
+                      variant="outline"
+                      className="h-20 flex-col space-y-2 w-full"
+                    >
+                      <Package className="w-6 h-6" />
+                      <span>Browse Items</span>
+                    </Button>
+                  </Link>
                   <Button variant="outline" className="h-20 flex-col space-y-2">
                     <User className="w-6 h-6" />
                     <span>Edit Profile</span>
