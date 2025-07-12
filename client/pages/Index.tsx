@@ -226,8 +226,7 @@ export default function Index() {
               </div>
 
               <div className="relative">
-                <Avatar3D className="mb-8" />
-                <div className="grid grid-cols-2 gap-4 mt-8">
+                <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-4">
                     <div
                       className="h-32 rounded-2xl shadow-lg bg-cover bg-center transform rotate-3 hover:scale-105 transition-transform duration-300"
