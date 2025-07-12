@@ -518,6 +518,8 @@ export default function AdminPanel() {
 
           {/* Analytics Tab */}
           <TabsContent value="analytics" className="space-y-6">
+            <AdvancedAnalytics />
+
             <div className="grid lg:grid-cols-2 gap-6">
               {/* Demographics */}
               <Card className="border-none shadow-lg">
