@@ -26,8 +26,7 @@ const featuredItems = [
     size: "M",
     condition: "Excellent",
     points: 150,
-    image:
-      "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=600&fit=crop&crop=center",
+    image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=600&fit=crop&crop=center",
     user: "Sarah M.",
     rating: 4.8,
   },
@@ -38,8 +37,7 @@ const featuredItems = [
     size: "S",
     condition: "Like New",
     points: 120,
-    image:
-      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=600&fit=crop&crop=center",
+    image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=600&fit=crop&crop=center",
     user: "Emma K.",
     rating: 4.9,
   },
@@ -50,8 +48,7 @@ const featuredItems = [
     size: "L",
     condition: "Good",
     points: 100,
-    image:
-      "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=600&fit=crop&crop=center",
+    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=600&fit=crop&crop=center",
     user: "Lisa R.",
     rating: 4.7,
   },
@@ -62,8 +59,7 @@ const featuredItems = [
     size: "8",
     condition: "Very Good",
     points: 180,
-    image:
-      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=600&fit=crop&crop=center",
+    image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=600&fit=crop&crop=center",
     user: "Maria S.",
     rating: 4.6,
   },
@@ -74,8 +70,7 @@ const featuredItems = [
     size: "M",
     condition: "Like New",
     points: 130,
-    image:
-      "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=400&h=600&fit=crop&crop=center",
+    image: "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=400&h=600&fit=crop&crop=center",
     user: "Alex R.",
     rating: 4.7,
   },
@@ -86,8 +81,7 @@ const featuredItems = [
     size: "9",
     condition: "Very Good",
     points: 110,
-    image:
-      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=600&fit=crop&crop=center",
+    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=600&fit=crop&crop=center",
     user: "Jordan K.",
     rating: 4.5,
   },
@@ -152,8 +146,16 @@ export default function Index() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-emerald-light via-white to-sage-light py-20 lg:py-32">
+            {/* Hero Section */}
+      <section className="relative py-20 lg:py-32 overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&h=1200&fit=crop&crop=center')`
+          }}
+        />
+        <div className="relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
