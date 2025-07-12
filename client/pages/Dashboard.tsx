@@ -1,0 +1,292 @@
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Recycle,
+  Plus,
+  Star,
+  Package,
+  ArrowRightLeft,
+  Coins,
+  User,
+  Settings,
+} from "lucide-react";
+
+export default function Dashboard() {
+  return (
+    <div className="min-h-screen bg-sage-light/30">
+      {/* Navigation */}
+      <nav className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <Recycle className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-2xl font-bold text-primary">ReWear</span>
+            </div>
+            <div className="hidden md:flex items-center space-x-8">
+              <a
+                href="/"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Browse
+              </a>
+              <a href="/dashboard" className="text-primary font-medium">
+                Dashboard
+              </a>
+              <a
+                href="/add-item"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                List Item
+              </a>
+            </div>
+            <div className="flex items-center space-x-4">
+              <Avatar className="w-8 h-8">
+                <AvatarImage src="/api/placeholder/32/32" />
+                <AvatarFallback>JD</AvatarFallback>
+              </Avatar>
+              <Button variant="ghost" size="icon">
+                <Settings className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-foreground mb-2">
+            Welcome back, John!
+          </h1>
+          <p className="text-muted-foreground">
+            Manage your items, track swaps, and explore new sustainable fashion
+            opportunities.
+          </p>
+        </div>
+
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <Card className="border-none shadow-lg bg-white">
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <Coins className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">
+                    Points Balance
+                  </p>
+                  <p className="text-2xl font-bold text-primary">1,250</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="border-none shadow-lg bg-white">
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-emerald/10 rounded-lg flex items-center justify-center">
+                  <Package className="w-6 h-6 text-emerald" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Listed Items</p>
+                  <p className="text-2xl font-bold text-emerald">12</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="border-none shadow-lg bg-white">
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-sage/10 rounded-lg flex items-center justify-center">
+                  <ArrowRightLeft className="w-6 h-6 text-sage" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Active Swaps</p>
+                  <p className="text-2xl font-bold text-sage">3</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="border-none shadow-lg bg-white">
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-earth/10 rounded-lg flex items-center justify-center">
+                  <Star className="w-6 h-6 text-earth" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Rating</p>
+                  <p className="text-2xl font-bold text-earth">4.8</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Quick Actions */}
+            <Card className="border-none shadow-lg bg-white">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Plus className="w-5 h-5" />
+                  <span>Quick Actions</span>
+                </CardTitle>
+                <CardDescription>Get started with common tasks</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <Button className="h-20 flex-col space-y-2">
+                    <Plus className="w-6 h-6" />
+                    <span>List New Item</span>
+                  </Button>
+                  <Button variant="outline" className="h-20 flex-col space-y-2">
+                    <Package className="w-6 h-6" />
+                    <span>Browse Items</span>
+                  </Button>
+                  <Button variant="outline" className="h-20 flex-col space-y-2">
+                    <User className="w-6 h-6" />
+                    <span>Edit Profile</span>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* My Items */}
+            <Card className="border-none shadow-lg bg-white">
+              <CardHeader className="flex flex-row items-center justify-between">
+                <div>
+                  <CardTitle>My Listed Items</CardTitle>
+                  <CardDescription>
+                    Items you've uploaded for swapping
+                  </CardDescription>
+                </div>
+                <Button variant="outline" size="sm">
+                  View All
+                </Button>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {[1, 2, 3].map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-center space-x-4 p-4 bg-sage-light/30 rounded-lg"
+                    >
+                      <div className="w-16 h-16 bg-emerald-light rounded-lg"></div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold">Vintage Denim Jacket</h4>
+                        <p className="text-sm text-muted-foreground">
+                          Listed 2 days ago • 3 interested users
+                        </p>
+                      </div>
+                      <Badge variant="secondary">Active</Badge>
+                      <Button variant="ghost" size="sm">
+                        Manage
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Profile Summary */}
+            <Card className="border-none shadow-lg bg-white">
+              <CardHeader className="text-center">
+                <Avatar className="w-20 h-20 mx-auto mb-4">
+                  <AvatarImage src="/api/placeholder/80/80" />
+                  <AvatarFallback className="text-xl">JD</AvatarFallback>
+                </Avatar>
+                <CardTitle>John Doe</CardTitle>
+                <CardDescription className="flex items-center justify-center space-x-1">
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <span>4.8 Rating</span>
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Member Since</span>
+                    <span>Jan 2024</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Total Swaps</span>
+                    <span>45</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Saved CO₂</span>
+                    <span className="text-emerald font-semibold">127 kg</span>
+                  </div>
+                </div>
+                <Button className="w-full mt-4" variant="outline">
+                  View Profile
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Recent Activity */}
+            <Card className="border-none shadow-lg bg-white">
+              <CardHeader>
+                <CardTitle>Recent Activity</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {[
+                    {
+                      action: "Swap completed",
+                      time: "2 hours ago",
+                      type: "success",
+                    },
+                    {
+                      action: "New item listed",
+                      time: "1 day ago",
+                      type: "info",
+                    },
+                    {
+                      action: "Swap request received",
+                      time: "3 days ago",
+                      type: "warning",
+                    },
+                  ].map((activity, index) => (
+                    <div key={index} className="flex items-center space-x-3">
+                      <div
+                        className={`w-2 h-2 rounded-full ${
+                          activity.type === "success"
+                            ? "bg-emerald"
+                            : activity.type === "info"
+                              ? "bg-primary"
+                              : "bg-earth"
+                        }`}
+                      ></div>
+                      <div className="flex-1">
+                        <p className="text-sm">{activity.action}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {activity.time}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
