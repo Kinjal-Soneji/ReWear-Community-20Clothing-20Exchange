@@ -500,21 +500,43 @@ export default function AddItem() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="aspect-[3/4] bg-gradient-to-br from-emerald-light to-sage-light rounded-lg flex items-center justify-center">
-                    <span className="text-muted-foreground">Item Photo</span>
+                  <div className="aspect-[3/4] bg-gradient-to-br from-emerald-light to-sage-light rounded-lg flex items-center justify-center overflow-hidden">
+                    {uploadedImages.length > 0 ? (
+                      <img
+                        src={uploadedImages[0]}
+                        alt="Preview"
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-muted-foreground">Item Photo</span>
+                    )}
                   </div>
                   <div>
-                    <h4 className="font-semibold">Item Title</h4>
+                    <h4 className="font-semibold">
+                      {formData.title || "Item Title"}
+                    </h4>
                     <p className="text-sm text-muted-foreground">
-                      Category • Size
+                      {formData.category || "Category"} • Size{" "}
+                      {formData.size || "Size"}
                     </p>
                   </div>
                   <div className="flex justify-between">
-                    <Badge variant="secondary">Condition</Badge>
+                    <Badge variant="secondary">
+                      {formData.condition || "Condition"}
+                    </Badge>
                     <span className="font-semibold text-primary">
-                      150 points
+                      {formData.pointValue || 150} points
                     </span>
                   </div>
+                  {tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1">
+                      {tags.slice(0, 3).map((tag) => (
+                        <Badge key={tag} variant="outline" className="text-xs">
+                          #{tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
