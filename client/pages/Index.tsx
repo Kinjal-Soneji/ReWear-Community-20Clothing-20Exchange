@@ -26,7 +26,8 @@ const featuredItems = [
     size: "M",
     condition: "Excellent",
     points: 150,
-    image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=600&fit=crop&crop=center",
+    image:
+      "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=600&fit=crop&crop=center",
     user: "Sarah M.",
     rating: 4.8,
   },
@@ -37,7 +38,8 @@ const featuredItems = [
     size: "S",
     condition: "Like New",
     points: 120,
-    image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=600&fit=crop&crop=center",
+    image:
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=600&fit=crop&crop=center",
     user: "Emma K.",
     rating: 4.9,
   },
@@ -48,7 +50,8 @@ const featuredItems = [
     size: "L",
     condition: "Good",
     points: 100,
-    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=600&fit=crop&crop=center",
+    image:
+      "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=600&fit=crop&crop=center",
     user: "Lisa R.",
     rating: 4.7,
   },
@@ -59,7 +62,8 @@ const featuredItems = [
     size: "8",
     condition: "Very Good",
     points: 180,
-    image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=600&fit=crop&crop=center",
+    image:
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=600&fit=crop&crop=center",
     user: "Maria S.",
     rating: 4.6,
   },
@@ -70,7 +74,8 @@ const featuredItems = [
     size: "M",
     condition: "Like New",
     points: 130,
-    image: "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=400&h=600&fit=crop&crop=center",
+    image:
+      "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=400&h=600&fit=crop&crop=center",
     user: "Alex R.",
     rating: 4.7,
   },
@@ -81,7 +86,8 @@ const featuredItems = [
     size: "9",
     condition: "Very Good",
     points: 110,
-    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=600&fit=crop&crop=center",
+    image:
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=600&fit=crop&crop=center",
     user: "Jordan K.",
     rating: 4.5,
   },
@@ -146,75 +152,76 @@ export default function Index() {
         </div>
       </nav>
 
-            {/* Hero Section */}
+      {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&h=1200&fit=crop&crop=center')`
+            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&h=1200&fit=crop&crop=center')`,
           }}
         />
         <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <Badge className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
-                  🌱 Sustainable Fashion Platform
-                </Badge>
-                <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                  Give Your Clothes a{" "}
-                  <span className="text-primary">Second Life</span>
-                </h1>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  Join thousands of fashion-conscious individuals exchanging,
-                  swapping, and discovering amazing pre-loved clothing. Reduce
-                  waste, save money, and refresh your wardrobe sustainably.
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  Start Swapping
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button size="lg" variant="outline">
-                  Browse Items
-                </Button>
-                <Button size="lg" variant="outline">
-                  List an Item
-                </Button>
-              </div>
-
-              <div className="grid grid-cols-3 gap-8 pt-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">10K+</div>
-                  <div className="text-muted-foreground">Items Exchanged</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">5K+</div>
-                  <div className="text-muted-foreground">Active Users</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">85%</div>
-                  <div className="text-muted-foreground">Waste Reduced</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="grid grid-cols-2 gap-4 rotate-3">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-8">
                 <div className="space-y-4">
-                  <div className="h-48 bg-emerald-light rounded-2xl shadow-lg"></div>
-                  <div className="h-32 bg-sage-light rounded-2xl shadow-lg"></div>
+                  <Badge className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+                    🌱 Sustainable Fashion Platform
+                  </Badge>
+                  <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
+                    Give Your Clothes a{" "}
+                    <span className="text-primary">Second Life</span>
+                  </h1>
+                  <p className="text-xl text-muted-foreground leading-relaxed">
+                    Join thousands of fashion-conscious individuals exchanging,
+                    swapping, and discovering amazing pre-loved clothing. Reduce
+                    waste, save money, and refresh your wardrobe sustainably.
+                  </p>
                 </div>
-                <div className="space-y-4 mt-8">
-                  <div className="h-32 bg-earth-light rounded-2xl shadow-lg"></div>
-                  <div className="h-48 bg-primary/10 rounded-2xl shadow-lg"></div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90">
+                    Start Swapping
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                  <Button size="lg" variant="outline">
+                    Browse Items
+                  </Button>
+                  <Button size="lg" variant="outline">
+                    List an Item
+                  </Button>
+                </div>
+
+                <div className="grid grid-cols-3 gap-8 pt-8">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-primary">10K+</div>
+                    <div className="text-muted-foreground">Items Exchanged</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-primary">5K+</div>
+                    <div className="text-muted-foreground">Active Users</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-primary">85%</div>
+                    <div className="text-muted-foreground">Waste Reduced</div>
+                  </div>
                 </div>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-3xl"></div>
+
+              <div className="relative">
+                <div className="grid grid-cols-2 gap-4 rotate-3">
+                  <div className="space-y-4">
+                    <div className="h-48 bg-emerald-light rounded-2xl shadow-lg"></div>
+                    <div className="h-32 bg-sage-light rounded-2xl shadow-lg"></div>
+                  </div>
+                  <div className="space-y-4 mt-8">
+                    <div className="h-32 bg-earth-light rounded-2xl shadow-lg"></div>
+                    <div className="h-48 bg-primary/10 rounded-2xl shadow-lg"></div>
+                  </div>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-3xl"></div>
+              </div>
             </div>
           </div>
         </div>
