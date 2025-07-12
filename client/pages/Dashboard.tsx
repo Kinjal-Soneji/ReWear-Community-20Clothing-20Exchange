@@ -22,10 +22,10 @@ import {
   Clock,
   MessageSquare,
   AlertCircle,
+  CheckCircle,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Badge } from "@/components/ui/badge";
 
 // Sample swap requests data
 const initialSwapRequests = [
