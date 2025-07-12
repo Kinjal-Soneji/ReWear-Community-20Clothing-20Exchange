@@ -17,6 +17,11 @@ import {
   Coins,
   User,
   Settings,
+  Check,
+  X,
+  Clock,
+  MessageSquare,
+  AlertCircle,
 } from "lucide-react";
 
 export default function Dashboard() {
