@@ -188,6 +188,16 @@ export default function Dashboard() {
             Manage your items, track swaps, and explore new sustainable fashion
             opportunities.
           </p>
+
+          {/* Success Message */}
+          {showSuccessMessage && (
+            <div className="mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center space-x-2">
+              <CheckCircle className="w-5 h-5 text-emerald-600" />
+              <span className="text-emerald-700 font-medium">
+                {location.state?.message}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Stats Cards */}
