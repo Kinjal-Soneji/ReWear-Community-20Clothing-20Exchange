@@ -17,8 +17,32 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Recycle, Upload, X, Plus } from "lucide-react";
+import { Recycle, Upload, X, Plus, Camera, CheckCircle } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+// Sample t-shirt images for demo purposes
+const sampleTshirtImages = [
+  "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=600&fit=crop&crop=center",
+  "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=600&fit=crop&crop=center",
+  "https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&h=600&fit=crop&crop=center",
+  "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&h=600&fit=crop&crop=center",
+  "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&h=600&fit=crop&crop=center",
+];
+
+interface ItemFormData {
+  title: string;
+  category: string;
+  description: string;
+  type: string;
+  size: string;
+  condition: string;
+  tags: string[];
+  images: string[];
+  swapAllowed: boolean;
+  pointsAllowed: boolean;
+  pointValue: number;
+}
 
 export default function AddItem() {
   const [tags, setTags] = useState<string[]>([]);
