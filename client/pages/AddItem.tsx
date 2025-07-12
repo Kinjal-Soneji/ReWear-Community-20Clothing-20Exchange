@@ -328,48 +328,60 @@ export default function AddItem() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
                     <Label htmlFor="type">Type</Label>
-                    <Select>
+                    <Select
+                      value={formData.type}
+                      onValueChange={(value) => updateFormData("type", value)}
+                    >
                       <SelectTrigger className="mt-1">
                         <SelectValue placeholder="Select type" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="shirt">Shirt</SelectItem>
-                        <SelectItem value="pants">Pants</SelectItem>
-                        <SelectItem value="dress">Dress</SelectItem>
-                        <SelectItem value="jacket">Jacket</SelectItem>
-                        <SelectItem value="boots">Boots</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
+                        <SelectItem value="T-Shirt">T-Shirt</SelectItem>
+                        <SelectItem value="Shirt">Shirt</SelectItem>
+                        <SelectItem value="Pants">Pants</SelectItem>
+                        <SelectItem value="Dress">Dress</SelectItem>
+                        <SelectItem value="Jacket">Jacket</SelectItem>
+                        <SelectItem value="Boots">Boots</SelectItem>
+                        <SelectItem value="Other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div>
                     <Label htmlFor="size">Size</Label>
-                    <Select>
+                    <Select
+                      value={formData.size}
+                      onValueChange={(value) => updateFormData("size", value)}
+                    >
                       <SelectTrigger className="mt-1">
                         <SelectValue placeholder="Select size" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="xs">XS</SelectItem>
-                        <SelectItem value="s">S</SelectItem>
-                        <SelectItem value="m">M</SelectItem>
-                        <SelectItem value="l">L</SelectItem>
-                        <SelectItem value="xl">XL</SelectItem>
-                        <SelectItem value="xxl">XXL</SelectItem>
+                        <SelectItem value="XS">XS</SelectItem>
+                        <SelectItem value="S">S</SelectItem>
+                        <SelectItem value="M">M</SelectItem>
+                        <SelectItem value="L">L</SelectItem>
+                        <SelectItem value="XL">XL</SelectItem>
+                        <SelectItem value="XXL">XXL</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div>
                     <Label htmlFor="condition">Condition</Label>
-                    <Select>
+                    <Select
+                      value={formData.condition}
+                      onValueChange={(value) =>
+                        updateFormData("condition", value)
+                      }
+                    >
                       <SelectTrigger className="mt-1">
                         <SelectValue placeholder="Select condition" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="like-new">Like New</SelectItem>
-                        <SelectItem value="excellent">Excellent</SelectItem>
-                        <SelectItem value="very-good">Very Good</SelectItem>
-                        <SelectItem value="good">Good</SelectItem>
-                        <SelectItem value="fair">Fair</SelectItem>
+                        <SelectItem value="Like New">Like New</SelectItem>
+                        <SelectItem value="Excellent">Excellent</SelectItem>
+                        <SelectItem value="Very Good">Very Good</SelectItem>
+                        <SelectItem value="Good">Good</SelectItem>
+                        <SelectItem value="Fair">Fair</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
