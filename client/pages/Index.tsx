@@ -403,12 +403,16 @@ export default function Index() {
                     </div>
 
                     <div className="flex space-x-2 pt-2">
-                      <Button className="flex-1" size="sm">
-                        Swap Request
-                      </Button>
-                      <Button variant="outline" className="flex-1" size="sm">
-                        Use Points
-                      </Button>
+                      <Link to={`/item/${item.id}`} className="flex-1">
+                        <Button className="w-full" size="sm">
+                          View Details
+                        </Button>
+                      </Link>
+                      <Link to={`/item/${item.id}`} className="flex-1">
+                        <Button variant="outline" className="w-full" size="sm">
+                          Quick Swap
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </CardContent>
