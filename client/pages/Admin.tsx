@@ -46,6 +46,8 @@ export default function Admin() {
       category: "Outerwear",
       submitted: "2 hours ago",
       status: "pending",
+      image:
+        "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=100&h=100&fit=crop&crop=center",
     },
     {
       id: "ITM002",
@@ -54,6 +56,8 @@ export default function Admin() {
       category: "Accessories",
       submitted: "4 hours ago",
       status: "pending",
+      image:
+        "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=100&h=100&fit=crop&crop=center",
     },
     {
       id: "ITM003",
@@ -62,6 +66,8 @@ export default function Admin() {
       category: "Dresses",
       submitted: "6 hours ago",
       status: "flagged",
+      image:
+        "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=100&h=100&fit=crop&crop=center",
     },
   ];
 
@@ -234,7 +240,11 @@ export default function Admin() {
                       <TableRow key={item.id}>
                         <TableCell>
                           <div className="flex items-center space-x-3">
-                            <div className="w-12 h-12 bg-emerald-light rounded-lg"></div>
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="w-12 h-12 rounded-lg object-cover"
+                            />
                             <div>
                               <p className="font-semibold">{item.title}</p>
                               <p className="text-sm text-muted-foreground">
