@@ -325,6 +325,63 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Avatar Showcase Section */}
+      <section className="py-20 bg-gradient-to-br from-purple-50 via-blue-50 to-emerald-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Try On Virtual Styles
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Interact with our 3D avatar! Rotate 360° and explore different
+              t-shirt designs to visualize how clothes look before you swap.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <Avatar3D />
+          </div>
+
+          <div className="text-center mt-12">
+            <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🎨</span>
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">
+                  Multiple Designs
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Browse through 6 different t-shirt styles and colors
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🔄</span>
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">
+                  360° Rotation
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Drag to rotate and see every angle of your virtual outfit
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">✨</span>
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">
+                  Real-time Preview
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Instantly see how different styles look on the avatar
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Items Carousel */}
       <section id="browse" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
