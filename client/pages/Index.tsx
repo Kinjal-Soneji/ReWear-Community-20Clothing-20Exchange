@@ -1,62 +1,477 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  ArrowRight,
+  Recycle,
+  Users,
+  Leaf,
+  Star,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { useState } from "react";
+
+const featuredItems = [
+  {
+    id: 1,
+    title: "Vintage Denim Jacket",
+    category: "Jackets",
+    size: "M",
+    condition: "Excellent",
+    points: 150,
+    image: "/api/placeholder/300/400",
+    user: "Sarah M.",
+    rating: 4.8,
+  },
+  {
+    id: 2,
+    title: "Designer Silk Blouse",
+    category: "Tops",
+    size: "S",
+    condition: "Like New",
+    points: 120,
+    image: "/api/placeholder/300/400",
+    user: "Emma K.",
+    rating: 4.9,
+  },
+  {
+    id: 3,
+    title: "Casual Summer Dress",
+    category: "Dresses",
+    size: "L",
+    condition: "Good",
+    points: 100,
+    image: "/api/placeholder/300/400",
+    user: "Lisa R.",
+    rating: 4.7,
+  },
+  {
+    id: 4,
+    title: "Leather Ankle Boots",
+    category: "Shoes",
+    size: "8",
+    condition: "Very Good",
+    points: 180,
+    image: "/api/placeholder/300/400",
+    user: "Maria S.",
+    rating: 4.6,
+  },
+];
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % featuredItems.length);
   };
 
+  const prevSlide = () => {
+    setCurrentSlide(
+      (prev) => (prev - 1 + featuredItems.length) % featuredItems.length,
+    );
+  };
+
+  const visibleItems = [
+    featuredItems[currentSlide],
+    featuredItems[(currentSlide + 1) % featuredItems.length],
+    featuredItems[(currentSlide + 2) % featuredItems.length],
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* Navigation */}
+      <nav className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <Recycle className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-2xl font-bold text-primary">ReWear</span>
+            </div>
+            <div className="hidden md:flex items-center space-x-8">
+              <a
+                href="#how-it-works"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                How it Works
+              </a>
+              <a
+                href="#browse"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Browse Items
+              </a>
+              <a
+                href="#about"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                About
+              </a>
+            </div>
+            <div className="flex items-center space-x-4">
+              <Button variant="ghost">Sign In</Button>
+              <Button>Get Started</Button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-emerald-light via-white to-sage-light py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <Badge className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+                  🌱 Sustainable Fashion Platform
+                </Badge>
+                <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
+                  Give Your Clothes a{" "}
+                  <span className="text-primary">Second Life</span>
+                </h1>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  Join thousands of fashion-conscious individuals exchanging,
+                  swapping, and discovering amazing pre-loved clothing. Reduce
+                  waste, save money, and refresh your wardrobe sustainably.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  Start Swapping
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+                <Button size="lg" variant="outline">
+                  Browse Items
+                </Button>
+                <Button size="lg" variant="outline">
+                  List an Item
+                </Button>
+              </div>
+
+              <div className="grid grid-cols-3 gap-8 pt-8">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary">10K+</div>
+                  <div className="text-muted-foreground">Items Exchanged</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary">5K+</div>
+                  <div className="text-muted-foreground">Active Users</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary">85%</div>
+                  <div className="text-muted-foreground">Waste Reduced</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-4 rotate-3">
+                <div className="space-y-4">
+                  <div className="h-48 bg-emerald-light rounded-2xl shadow-lg"></div>
+                  <div className="h-32 bg-sage-light rounded-2xl shadow-lg"></div>
+                </div>
+                <div className="space-y-4 mt-8">
+                  <div className="h-32 bg-earth-light rounded-2xl shadow-lg"></div>
+                  <div className="h-48 bg-primary/10 rounded-2xl shadow-lg"></div>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-3xl"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section id="how-it-works" className="py-20 bg-sage-light/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
+              How ReWear Works
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Simple, sustainable, and rewarding. Start your clothing exchange
+              journey in three easy steps.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="border-none shadow-lg bg-white">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-primary" />
+                </div>
+                <CardTitle className="text-xl">List Your Items</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-center text-base">
+                  Upload photos and details of clothes you no longer wear. Set
+                  your swap preferences or point value.
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-lg bg-white">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Recycle className="w-8 h-8 text-primary" />
+                </div>
+                <CardTitle className="text-xl">Swap or Redeem</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-center text-base">
+                  Browse amazing items and either request a direct swap or use
+                  your earned points to redeem.
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-lg bg-white">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Leaf className="w-8 h-8 text-primary" />
+                </div>
+                <CardTitle className="text-xl">Make an Impact</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-center text-base">
+                  Refresh your wardrobe sustainably while helping reduce textile
+                  waste and supporting circular fashion.
+                </CardDescription>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Items Carousel */}
+      <section id="browse" className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-12">
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                Featured Items
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Discover amazing pre-loved fashion from our community
+              </p>
+            </div>
+            <div className="flex space-x-2">
+              <Button variant="outline" size="icon" onClick={prevSlide}>
+                <ChevronLeft className="w-4 h-4" />
+              </Button>
+              <Button variant="outline" size="icon" onClick={nextSlide}>
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {visibleItems.map((item, index) => (
+              <Card
+                key={`${item.id}-${index}`}
+                className="group hover:shadow-xl transition-all duration-300 border-none shadow-lg overflow-hidden"
+              >
+                <div className="aspect-[3/4] bg-gradient-to-br from-emerald-light to-sage-light relative overflow-hidden">
+                  <div className="absolute inset-4 bg-white/80 rounded-lg flex items-center justify-center">
+                    <span className="text-muted-foreground text-sm">
+                      Image Placeholder
+                    </span>
+                  </div>
+                  <Badge className="absolute top-4 left-4 bg-white/90 text-foreground border-none">
+                    {item.condition}
+                  </Badge>
+                </div>
+                <CardContent className="p-6">
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
+                          {item.title}
+                        </h3>
+                        <p className="text-muted-foreground">
+                          {item.category} • Size {item.size}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-primary">
+                          {item.points} pts
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-6 h-6 bg-emerald-light rounded-full"></div>
+                        <span className="text-sm text-muted-foreground">
+                          {item.user}
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                        <span className="text-sm font-medium">
+                          {item.rating}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex space-x-2 pt-2">
+                      <Button className="flex-1" size="sm">
+                        Swap Request
+                      </Button>
+                      <Button variant="outline" className="flex-1" size="sm">
+                        Use Points
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button size="lg" variant="outline">
+              View All Items
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-primary">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+            Ready to Start Your Sustainable Fashion Journey?
+          </h2>
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Join thousands of conscious fashionistas making a difference. Sign
+            up today and get 50 bonus points to start swapping!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              variant="secondary"
+              className="bg-white text-primary hover:bg-white/90"
+            >
+              Create Free Account
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-white hover:bg-white/10"
+            >
+              Learn More
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-foreground text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Recycle className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-2xl font-bold">ReWear</span>
+              </div>
+              <p className="text-white/70">
+                Making fashion more sustainable, one swap at a time.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Platform</h4>
+              <ul className="space-y-2 text-white/70">
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    How it Works
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Browse Items
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    List an Item
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Community
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Support</h4>
+              <ul className="space-y-2 text-white/70">
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Help Center
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Safety
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    FAQ
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Company</h4>
+              <ul className="space-y-2 text-white/70">
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Careers
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Press
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/70">
+            <p>&copy; 2024 ReWear. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
