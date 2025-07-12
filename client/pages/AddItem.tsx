@@ -436,7 +436,14 @@ export default function AddItem() {
               <CardContent className="space-y-4">
                 <div className="space-y-2">
                   <Label className="flex items-center space-x-2">
-                    <input type="checkbox" className="rounded" defaultChecked />
+                    <input
+                      type="checkbox"
+                      className="rounded"
+                      checked={formData.swapAllowed}
+                      onChange={(e) =>
+                        updateFormData("swapAllowed", e.target.checked)
+                      }
+                    />
                     <span>Allow direct swaps</span>
                   </Label>
                   <p className="text-sm text-muted-foreground">
@@ -446,7 +453,14 @@ export default function AddItem() {
 
                 <div className="space-y-2">
                   <Label className="flex items-center space-x-2">
-                    <input type="checkbox" className="rounded" defaultChecked />
+                    <input
+                      type="checkbox"
+                      className="rounded"
+                      checked={formData.pointsAllowed}
+                      onChange={(e) =>
+                        updateFormData("pointsAllowed", e.target.checked)
+                      }
+                    />
                     <span>Accept points redemption</span>
                   </Label>
                   <p className="text-sm text-muted-foreground">
@@ -459,6 +473,13 @@ export default function AddItem() {
                   <Input
                     id="points"
                     type="number"
+                    value={formData.pointValue}
+                    onChange={(e) =>
+                      updateFormData(
+                        "pointValue",
+                        parseInt(e.target.value) || 0,
+                      )
+                    }
                     placeholder="150"
                     className="mt-1"
                   />
