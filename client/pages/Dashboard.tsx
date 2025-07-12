@@ -180,16 +180,42 @@ export default function Dashboard() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {[1, 2, 3].map((item) => (
+                  {[
+                    {
+                      id: 1,
+                      title: "Vintage Denim Jacket",
+                      image:
+                        "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=100&h=100&fit=crop&crop=center",
+                      status: "3 interested users",
+                    },
+                    {
+                      id: 2,
+                      title: "Designer Silk Blouse",
+                      image:
+                        "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=100&h=100&fit=crop&crop=center",
+                      status: "2 interested users",
+                    },
+                    {
+                      id: 3,
+                      title: "Summer Floral Dress",
+                      image:
+                        "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=100&h=100&fit=crop&crop=center",
+                      status: "5 interested users",
+                    },
+                  ].map((item) => (
                     <div
-                      key={item}
+                      key={item.id}
                       className="flex items-center space-x-4 p-4 bg-sage-light/30 rounded-lg"
                     >
-                      <div className="w-16 h-16 bg-emerald-light rounded-lg"></div>
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-16 h-16 rounded-lg object-cover"
+                      />
                       <div className="flex-1">
-                        <h4 className="font-semibold">Vintage Denim Jacket</h4>
+                        <h4 className="font-semibold">{item.title}</h4>
                         <p className="text-sm text-muted-foreground">
-                          Listed 2 days ago • 3 interested users
+                          Listed 2 days ago • {item.status}
                         </p>
                       </div>
                       <Badge variant="secondary">Active</Badge>
