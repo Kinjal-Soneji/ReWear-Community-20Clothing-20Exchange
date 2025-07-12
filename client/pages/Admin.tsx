@@ -110,7 +110,14 @@ export default function Admin() {
               </a>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost">← Back to Site</Button>
+              <Link to="/admin-panel">
+                <Button className="bg-gradient-to-r from-purple-500 to-blue-500 text-white">
+                  🚀 New Admin Panel
+                </Button>
+              </Link>
+              <Link to="/">
+                <Button variant="ghost">← Back to Site</Button>
+              </Link>
             </div>
           </div>
         </div>
