@@ -212,12 +212,32 @@ export default function Index() {
               <div className="relative">
                 <div className="grid grid-cols-2 gap-4 rotate-3">
                   <div className="space-y-4">
-                    <div className="h-48 bg-emerald-light rounded-2xl shadow-lg"></div>
-                    <div className="h-32 bg-sage-light rounded-2xl shadow-lg"></div>
+                    <div
+                      className="h-48 rounded-2xl shadow-lg bg-cover bg-center"
+                      style={{
+                        backgroundImage: `url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&h=600&fit=crop&crop=center')`,
+                      }}
+                    ></div>
+                    <div
+                      className="h-32 rounded-2xl shadow-lg bg-cover bg-center"
+                      style={{
+                        backgroundImage: `url('https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=300&fit=crop&crop=center')`,
+                      }}
+                    ></div>
                   </div>
                   <div className="space-y-4 mt-8">
-                    <div className="h-32 bg-earth-light rounded-2xl shadow-lg"></div>
-                    <div className="h-48 bg-primary/10 rounded-2xl shadow-lg"></div>
+                    <div
+                      className="h-32 rounded-2xl shadow-lg bg-cover bg-center"
+                      style={{
+                        backgroundImage: `url('https://images.unsplash.com/photo-1544966503-7cc4ac882d5d?w=400&h=300&fit=crop&crop=center')`,
+                      }}
+                    ></div>
+                    <div
+                      className="h-48 rounded-2xl shadow-lg bg-cover bg-center"
+                      style={{
+                        backgroundImage: `url('https://images.unsplash.com/photo-1611601679655-7c8bc197f0c6?w=400&h=600&fit=crop&crop=center')`,
+                      }}
+                    ></div>
                   </div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-3xl"></div>
