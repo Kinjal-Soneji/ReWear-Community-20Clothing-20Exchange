@@ -68,13 +68,75 @@ export default function AddItem() {
 
   const addTag = () => {
     if (newTag.trim() && !tags.includes(newTag.trim())) {
-      setTags([...tags, newTag.trim()]);
+      const updatedTags = [...tags, newTag.trim()];
+      setTags(updatedTags);
+      setFormData((prev) => ({ ...prev, tags: updatedTags }));
       setNewTag("");
     }
   };
 
   const removeTag = (tagToRemove: string) => {
-    setTags(tags.filter((tag) => tag !== tagToRemove));
+    const updatedTags = tags.filter((tag) => tag !== tagToRemove);
+    setTags(updatedTags);
+    setFormData((prev) => ({ ...prev, tags: updatedTags }));
+  };
+
+  const handleImageSelect = (imageUrl: string) => {
+    if (uploadedImages.length < 5 && !uploadedImages.includes(imageUrl)) {
+      const updatedImages = [...uploadedImages, imageUrl];
+      setUploadedImages(updatedImages);
+      setFormData((prev) => ({ ...prev, images: updatedImages }));
+    }
+  };
+
+  const removeImage = (imageUrl: string) => {
+    const updatedImages = uploadedImages.filter((img) => img !== imageUrl);
+    setUploadedImages(updatedImages);
+    setFormData((prev) => ({ ...prev, images: updatedImages }));
+  };
+
+  const updateFormData = (field: keyof ItemFormData, value: any) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async () => {
+    if (!formData.title || !formData.category || uploadedImages.length === 0) {
+      alert("Please fill in all required fields and add at least one image.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    // Create new item
+    const newItem = {
+      id: Date.now(),
+      ...formData,
+      images: uploadedImages,
+      tags,
+      user: "You",
+      dateAdded: new Date().toISOString(),
+      status: "active",
+      views: 0,
+      interested: 0,
+    };
+
+    // Save to localStorage (in a real app, this would be an API call)
+    const existingItems = JSON.parse(localStorage.getItem("userItems") || "[]");
+    existingItems.push(newItem);
+    localStorage.setItem("userItems", JSON.stringify(existingItems));
+
+    setIsSubmitting(false);
+
+    // Navigate back to dashboard
+    navigate("/dashboard", {
+      state: {
+        message: "Item listed successfully!",
+        newItem,
+      },
+    });
   };
 
   return (
