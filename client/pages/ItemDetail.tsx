@@ -20,7 +20,12 @@ import { useState } from "react";
 
 export default function ItemDetail() {
   const [currentImage, setCurrentImage] = useState(0);
-  const images = [1, 2, 3, 4]; // Placeholder for image gallery
+  const images = [
+    "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&h=800&fit=crop&crop=center",
+    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=800&fit=crop&crop=center",
+    "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&h=800&fit=crop&crop=center",
+    "https://images.unsplash.com/photo-1605141978d95-25ed5b97f5a5?w=600&h=800&fit=crop&crop=center",
+  ];
 
   const nextImage = () => {
     setCurrentImage((prev) => (prev + 1) % images.length);
@@ -73,13 +78,14 @@ export default function ItemDetail() {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Image Gallery */}
           <div className="space-y-4">
-            <div className="aspect-[3/4] bg-gradient-to-br from-emerald-light to-sage-light rounded-2xl relative overflow-hidden">
-              <div className="absolute inset-4 bg-white/80 rounded-lg flex items-center justify-center">
-                <span className="text-muted-foreground">
-                  Item Photo {currentImage + 1}
-                </span>
-              </div>
-              <Badge className="absolute top-4 left-4 bg-white/90 text-foreground border-none">
+            <div className="aspect-[3/4] rounded-2xl relative overflow-hidden">
+              <img
+                src={images[currentImage]}
+                alt={`Vintage Denim Jacket - Photo ${currentImage + 1}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+              <Badge className="absolute top-4 left-4 bg-white/90 text-foreground border-none shadow-md">
                 Excellent Condition
               </Badge>
               <Button
@@ -100,21 +106,21 @@ export default function ItemDetail() {
               </Button>
             </div>
             <div className="grid grid-cols-4 gap-2">
-              {images.map((_, index) => (
+              {images.map((image, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentImage(index)}
-                  className={`aspect-square bg-gradient-to-br from-emerald-light to-sage-light rounded-lg border-2 ${
+                  className={`aspect-square rounded-lg border-2 overflow-hidden ${
                     currentImage === index
                       ? "border-primary"
                       : "border-transparent"
                   }`}
                 >
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-xs text-muted-foreground">
-                      {index + 1}
-                    </span>
-                  </div>
+                  <img
+                    src={image}
+                    alt={`Thumbnail ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
                 </button>
               ))}
             </div>
