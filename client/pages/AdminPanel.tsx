@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import AdvancedAnalytics from "@/components/AdvancedAnalytics";
 import { Button } from "@/components/ui/button";
 import {
   Card,
