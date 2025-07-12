@@ -100,7 +100,22 @@ const initialSwapRequests = [
 ];
 
 export default function Dashboard() {
+  const location = useLocation();
   const [swapRequests, setSwapRequests] = useState(initialSwapRequests);
+  const [userItems, setUserItems] = useState<any[]>([]);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  useEffect(() => {
+    // Load user items from localStorage
+    const savedItems = JSON.parse(localStorage.getItem("userItems") || "[]");
+    setUserItems(savedItems);
+
+    // Show success message if navigated from add item
+    if (location.state?.message) {
+      setShowSuccessMessage(true);
+      setTimeout(() => setShowSuccessMessage(false), 5000);
+    }
+  }, [location]);
 
   const handleAcceptSwap = (requestId: number) => {
     setSwapRequests((prev) =>
