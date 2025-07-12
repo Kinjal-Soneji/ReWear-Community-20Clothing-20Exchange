@@ -337,13 +337,20 @@ export default function Index() {
                 key={`${item.id}-${index}`}
                 className="group hover:shadow-xl transition-all duration-300 border-none shadow-lg overflow-hidden"
               >
-                <div className="aspect-[3/4] bg-gradient-to-br from-emerald-light to-sage-light relative overflow-hidden">
-                  <div className="absolute inset-4 bg-white/80 rounded-lg flex items-center justify-center">
-                    <span className="text-muted-foreground text-sm">
-                      Image Placeholder
-                    </span>
-                  </div>
-                  <Badge className="absolute top-4 left-4 bg-white/90 text-foreground border-none">
+                <div className="aspect-[3/4] relative overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    onError={(e) => {
+                      e.currentTarget.style.backgroundImage =
+                        "linear-gradient(45deg, hsl(var(--emerald-light)), hsl(var(--sage-light)))";
+                      e.currentTarget.style.backgroundColor =
+                        "hsl(var(--emerald-light))";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <Badge className="absolute top-4 left-4 bg-white/90 text-foreground border-none shadow-md">
                     {item.condition}
                   </Badge>
                 </div>
