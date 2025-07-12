@@ -19,6 +19,7 @@ import {
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import TShirt3D from "@/components/TShirt3D";
+import Avatar3D from "@/components/Avatar3D";
 
 const featuredItems = [
   {
