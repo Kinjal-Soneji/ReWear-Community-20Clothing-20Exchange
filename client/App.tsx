@@ -15,6 +15,7 @@ import Dashboard from "./pages/Dashboard";
 import AddItem from "./pages/AddItem";
 import ItemDetail from "./pages/ItemDetail";
 import Admin from "./pages/Admin";
+import AdminPanel from "./pages/AdminPanel";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/add-item" element={<AddItem />} />
           <Route path="/item/:id" element={<ItemDetail />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/admin-panel" element={<AdminPanel />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
