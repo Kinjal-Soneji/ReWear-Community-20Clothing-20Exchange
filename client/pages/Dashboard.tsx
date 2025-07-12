@@ -513,52 +513,78 @@ export default function Dashboard() {
                 </Button>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  {[
-                    {
-                      id: 1,
-                      title: "Vintage Denim Jacket",
-                      image:
-                        "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=100&h=100&fit=crop&crop=center",
-                      status: "3 interested users",
-                    },
-                    {
-                      id: 2,
-                      title: "Designer Silk Blouse",
-                      image:
-                        "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=100&h=100&fit=crop&crop=center",
-                      status: "2 interested users",
-                    },
-                    {
-                      id: 3,
-                      title: "Summer Floral Dress",
-                      image:
-                        "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=100&h=100&fit=crop&crop=center",
-                      status: "5 interested users",
-                    },
-                  ].map((item) => (
-                    <div
-                      key={item.id}
-                      className="flex items-center space-x-4 p-4 bg-sage-light/30 rounded-lg"
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-16 h-16 rounded-lg object-cover"
-                      />
-                      <div className="flex-1">
-                        <h4 className="font-semibold">{item.title}</h4>
-                        <p className="text-sm text-muted-foreground">
-                          Listed 2 days ago • {item.status}
-                        </p>
-                      </div>
-                      <Badge variant="secondary">Active</Badge>
-                      <Button variant="ghost" size="sm">
-                        Manage
+                {userItems.length === 0 ? (
+                  <div className="text-center py-8">
+                    <Package className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-foreground mb-2">
+                      No items listed yet
+                    </h3>
+                    <p className="text-muted-foreground mb-4">
+                      Start by listing your first item to begin swapping
+                    </p>
+                    <Link to="/add-item">
+                      <Button className="flex items-center space-x-2">
+                        <Plus className="w-4 h-4" />
+                        <span>List Your First Item</span>
                       </Button>
-                    </div>
-                  ))}
-                </div>
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {userItems.slice(0, 3).map((item) => (
+                      <div
+                        key={item.id}
+                        className="flex items-center space-x-4 p-4 bg-sage-light/30 rounded-lg hover:bg-sage-light/50 transition-colors"
+                      >
+                        <img
+                          src={item.images?.[0] || item.image}
+                          alt={item.title}
+                          className="w-16 h-16 rounded-lg object-cover"
+                        />
+                        <div className="flex-1">
+                          <h4 className="font-semibold">{item.title}</h4>
+                          <p className="text-sm text-muted-foreground">
+                            {item.category} • Size {item.size} •{" "}
+                            {item.condition}
+                          </p>
+                          <div className="flex items-center space-x-2 mt-1">
+                            <Badge variant="secondary" className="text-xs">
+                              {item.swapAllowed ? "Swap" : ""}{" "}
+                              {item.pointsAllowed
+                                ? `${item.pointValue} pts`
+                                : ""}
+                            </Badge>
+                            <span className="text-xs text-muted-foreground">
+                              Listed{" "}
+                              {new Date(item.dateAdded).toLocaleDateString()}
+                            </span>
+                          </div>
+                        </div>
+                        <Badge
+                          className={`${
+                            item.status === "active"
+                              ? "bg-emerald text-white"
+                              : "bg-gray-500 text-white"
+                          }`}
+                        >
+                          {item.status}
+                        </Badge>
+                        <Link to={`/item/${item.id}`}>
+                          <Button variant="ghost" size="sm">
+                            View
+                          </Button>
+                        </Link>
+                      </div>
+                    ))}
+                    {userItems.length > 3 && (
+                      <div className="text-center pt-4">
+                        <Button variant="outline">
+                          View All {userItems.length} Items
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>
