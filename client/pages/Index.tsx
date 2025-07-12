@@ -120,35 +120,39 @@ export default function Index() {
       <nav className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <Recycle className="w-5 h-5 text-white" />
               </div>
               <span className="text-2xl font-bold text-primary">ReWear</span>
-            </div>
+            </Link>
             <div className="hidden md:flex items-center space-x-8">
-              <a
-                href="#how-it-works"
+              <Link
+                to="/how-it-works"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 How it Works
-              </a>
-              <a
-                href="#browse"
+              </Link>
+              <Link
+                to="/browse"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 Browse Items
-              </a>
-              <a
-                href="#about"
+              </Link>
+              <Link
+                to="/about"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 About
-              </a>
+              </Link>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost">Sign In</Button>
-              <Button>Get Started</Button>
+              <Link to="/signin">
+                <Button variant="ghost">Sign In</Button>
+              </Link>
+              <Link to="/dashboard">
+                <Button>Get Started</Button>
+              </Link>
             </div>
           </div>
         </div>
