@@ -212,8 +212,13 @@ export default function Dashboard() {
                   <ArrowRightLeft className="w-6 h-6 text-sage" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Active Swaps</p>
-                  <p className="text-2xl font-bold text-sage">3</p>
+                  <p className="text-sm text-muted-foreground">Swap Requests</p>
+                  <p className="text-2xl font-bold text-sage">
+                    {
+                      swapRequests.filter((req) => req.status === "pending")
+                        .length
+                    }
+                  </p>
                 </div>
               </div>
             </CardContent>
